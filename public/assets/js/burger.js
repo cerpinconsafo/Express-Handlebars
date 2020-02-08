@@ -1,48 +1,46 @@
+// Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
 
   $(".create-form").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+      event.preventDefault();
 
-    var newBurger = {
-      name: $("#burger").val().trim(),
-      eaten: '0'
-    };
-console.log(newBurger)
+      var newBurger = {
+          name: $("#burgerEntry").val().trim()
+      };
+      console.log(newBurger);
 
-    // Send the POST request.
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-        console.log("created new burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+      // POST request
+      $.ajax("api/burgers", {
+          type: "POST",
+          data: newBurger
+      }).then(
+          function() {
+              console.log('Created a new tasty Burger')
+              location.reload();
+          }
+      );
   });
 
-  $(".eat").on("click", function(event) {
-    var id = $(this).data("id");
-    var newEaten = $(this).data("neweaten") === false;
+  //click function for devour
+  $(".change-Eaten").on("click", function(event){
+      var id = $(this).data("id");
+      var confirmEat = $(this).data("newEaten") === false;
 
-    var newEatenState = {
-      eaten:  newEaten
-    };
-    console.log('id:' + id)
-    console.log('eaten:' + newEatenState.eaten)
+      var confirmEatState = {
+          devour: confirmEat
+      };
+      console.log(`id: ${id} eaten: ${confirmEatState.devour}`);
 
-    // Send the PUT request.
-    $.ajax("/api/burgers/" + id, {
-      type: "PUT",
-      data: newEatenState
-    }).then(
-      function() {
-        console.log("changed eaten state to", newEaten);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+      $.ajax(`api/burgers/${id}`, {
+          type: "PUT",
+          data: confirmEatState
+      }).then(
+          function() {
+              console.log(`changed eaten state to: ${confirmEat}`);
+              location.reload();
+          }
+      );
   });
-})
+
+
+});
