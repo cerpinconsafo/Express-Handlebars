@@ -1,7 +1,10 @@
 var express = require("express");
+
 var router = express.Router();
+
 //Import the model to use it DB functions
 var burger = require("../models/burger.js");
+
 //create all routes and set up logic within routes where required
 router.get("/", function(req, res) {
     burger.all(function(data) {
@@ -12,6 +15,7 @@ router.get("/", function(req, res) {
         res.render("index", hbsObject);
     });
 });
+
 router.post("/api/burgers", function(req, res) {
     console.log(req.body);
     burger.create([
@@ -23,18 +27,14 @@ router.post("/api/burgers", function(req, res) {
         res.json({ id: result.insertId });
     });
 });
+
 router.put("/api/burgers/:id", function(req, res) {
     var condition = `id = ${req.params.id}`;
-    var flagStatus;
+
     console.log("condition", condition);
-    if(req.body.devour){
-        flagStatus = 1;
-    }else{
-        flagStatus =0;
-    }
 
     burger.update({
-        devoured: flagStatus
+        devoured: req.body.devour
     }, condition, function(result) {
         if (result.changedRows == 0) {
             //If no rows were changed, then ID must not Exist, throw 404
@@ -44,5 +44,6 @@ router.put("/api/burgers/:id", function(req, res) {
         }
     });
 });
+
 //Export route for server.js
 module.exports = router;
