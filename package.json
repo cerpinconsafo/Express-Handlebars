@@ -1,31 +1,28 @@
 {
-  "name": "burger",
+  "name": "Express-Handlebars",
   "version": "1.0.0",
-  "engines": {
-    "node": "8.11.2"
-  },
-  "description": "",
+  "description": "Burger is a logger application that allows a user to input a burger name which is logged onto to the screen. The user can then choose to \"Devour\" each burger. Eaten burgers are listed for the user's reference.",
   "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/singha53/burger.git"
+    "url": "git+https://github.com/cerpinconsafo/Express-Handlebars.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/singha53/burger/issues"
+    "url": "https://github.com/cerpinconsafo/Express-Handlebars/issues"
   },
-  "homepage": "https://github.com/singha53/burger#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "mysql": "^2.16.0",
-    "mysql2": "^1.6.1"
-  }
+  "homepage": "https://github.com/cerpinconsafo/Express-Handlebars#readme"
 }
