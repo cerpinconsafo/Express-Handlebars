@@ -4,8 +4,8 @@
   "description": "Burger is a logger application that allows a user to input a burger name which is logged onto to the screen. The user can then choose to \"Devour\" each burger. Eaten burgers are listed for the user's reference.",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "express-handlebars": "^5.3.1",
     "mysql": "^2.18.1"
   },
